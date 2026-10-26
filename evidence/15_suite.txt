@@ -1,0 +1,57 @@
+F................F......................                                 [100%]
+================================== FAILURES ===================================
+_____________________ test_audit_counts_overlap_and_blobs _____________________
+
+    def test_audit_counts_overlap_and_blobs():
+        result = audit(REPO)
+        assert result['commit'] == 'a004b69ec0dd446e0afd461d98cb5e96e120a5d0'
+        for task, counts in [('email', (50, 50, 45, 44, 11)), ('table', (900, 100, 617, 84, 0))]:
+            r = result['tasks'][task]
+            assert tuple(r[k] for k in ['train_rows', 'test_rows', 'train_groups', 'test_groups', 'overlap_groups']) == counts
+        assert len(result['files']) >= 16
+>       assert all(f['working_tree_matches_blob'] for f in result['files'].values())
+E       assert False
+E        +  where False = all(<generator object test_audit_counts_overlap_and_blobs.<locals>.<genexpr> at 0x000001C5E1ED2C20>)
+
+tests\test_data.py:21: AssertionError
+________________________ test_build_offline_artifacts _________________________
+
+tmp_path = WindowsPath('C:/Users/diazh/AppData/Local/Temp/pytest-of-diazh/pytest-121/test_build_offline_artifacts0')
+
+    def test_build_offline_artifacts(tmp_path):
+>       build(Path('vendor/BIPIA'),tmp_path,scenarios=('S180',),bootstrap_repetitions=20, mock=False)
+
+tests\test_pipeline.py:46: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+repo = WindowsPath('vendor/BIPIA')
+out = WindowsPath('C:/Users/diazh/AppData/Local/Temp/pytest-of-diazh/pytest-121/test_build_offline_artifacts0')
+
+    def build(repo, out, *, scenarios=('S180','S540'), bootstrap_repetitions=10000, mock=True):
+        out = Path(out)
+        out.mkdir(parents=True,exist_ok=True)
+        source = audit(repo)
+        write_json(out/'input_hashes.json',source)
+        reg = registry(repo)
+        write_json(out/'scorer_registry.json',reg)
+        write_json(out/'synthetic_scores.json',synthetic_scores(reg))
+        write_json(out/'arms.json',{t:{a:dict(text=guidance(t,a),sha256=digest(guidance(t,a)),semantic_approval='PENDING') for a in ARMS} for t in ('email','table')})
+        summary = dict(mode='OFFLINE_ONLY',recommendation='NO-GO',seed=SEED,model_proposal=MODEL,commit=COMMIT,
+            python=platform.python_version(), scenarios={},live_target_calls=0,live_judge_calls=0,hard_benign_approved=0,
+            protocol_sha256=digest(Path('docs/04_experiment_design.md').read_bytes()),
+            source_data_verified=True,final_sample_approved=False,
+            scorer_counts=dict(Counter(r['kind'] for r in reg.values())))
+        review_cases = {}
+        for scenario in scenarios:
+            folder = out/scenario
+            folder.mkdir(exist_ok=True)
+            cases = candidates(repo,scenario,SEED)
+>           rows = plan(cases,SEED)
+                   ^^^^
+E           NameError: name 'plan' is not defined
+
+preflight\pipeline.py:104: NameError
+=========================== short test summary info ===========================
+FAILED tests/test_data.py::test_audit_counts_overlap_and_blobs - assert False
+FAILED tests/test_pipeline.py::test_build_offline_artifacts - NameError: name...
+2 failed, 38 passed in 10.01s

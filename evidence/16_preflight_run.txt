@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\diazh\OneDrive\文档\bipia-controlled-evaluation\preflight\__main__.py", line 20, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\diazh\OneDrive\文档\bipia-controlled-evaluation\preflight\__main__.py", line 15, in main
+    result = build(args.repo,args.out,bootstrap_repetitions=args.bootstrap_repetitions,mock=not args.no_mock)
+  File "C:\Users\diazh\OneDrive\文档\bipia-controlled-evaluation\preflight\pipeline.py", line 104, in build
+    rows = plan(cases,SEED)
+           ^^^^
+NameError: name 'plan' is not defined

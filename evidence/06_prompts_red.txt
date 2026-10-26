@@ -1,0 +1,8 @@
+
+=================================== ERRORS ====================================
+___________________ ERROR collecting tests/test_prompts.py ____________________
+ImportError while importing test module 'C:\\Users\\diazh\\OneDrive\\\u6587\u6863\\bipia-controlled-evaluation\\tests\\test_prompts.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n..\\..\\..\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\importlib\\__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests\\test_prompts.py:5: in <module>\n    from preflight.prompts import SYSTEM, REMINDER, TEMPLATES, ARMS, guidance, render\nE   ModuleNotFoundError: No module named 'preflight.prompts'
+=========================== short test summary info ===========================
+ERROR tests/test_prompts.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+1 error in 0.14s

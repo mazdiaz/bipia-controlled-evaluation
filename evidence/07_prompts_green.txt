@@ -1,0 +1,47 @@
+...F                                                                     [100%]
+================================== FAILURES ===================================
+_______ test_token_counts_real_complete_messages_and_failures_reported ________
+
+    def test_token_counts_real_complete_messages_and_failures_reported():
+>       enc = encoding()
+              ^^^^^^^^^^
+
+tests\test_prompts.py:41: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+preflight\tokens.py:17: in encoding
+    enc = tiktoken.encoding_for_model(MODEL)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+.venv\Lib\site-packages\tiktoken\model.py:118: in encoding_for_model
+    return get_encoding(encoding_name_for_model(model_name))
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+model_name = 'gpt-5.4-mini-2026-03-17'
+
+    def encoding_name_for_model(model_name: str) -> str:
+        """Returns the name of the encoding used by a model.
+    
+        Raises a KeyError if the model name is not recognised.
+        """
+        encoding_name = None
+        if model_name in MODEL_TO_ENCODING:
+            encoding_name = MODEL_TO_ENCODING[model_name]
+        else:
+            # Check if the model matches a known prefix
+            # Prefix matching avoids needing library updates for every model version release
+            # Note that this can match on non-existent models (e.g., gpt-3.5-turbo-FAKE)
+            for model_prefix, model_encoding_name in MODEL_PREFIX_TO_ENCODING.items():
+                if model_name.startswith(model_prefix):
+                    return model_encoding_name
+    
+        if encoding_name is None:
+>           raise KeyError(
+                f"Could not automatically map {model_name} to a tokeniser. "
+                "Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect."
+            ) from None
+E           KeyError: 'Could not automatically map gpt-5.4-mini-2026-03-17 to a tokeniser. Please use `tiktoken.get_encoding` to explicitly get the tokeniser you expect.'
+
+.venv\Lib\site-packages\tiktoken\model.py:105: KeyError
+=========================== short test summary info ===========================
+FAILED tests/test_prompts.py::test_token_counts_real_complete_messages_and_failures_reported
+1 failed, 3 passed in 0.64s

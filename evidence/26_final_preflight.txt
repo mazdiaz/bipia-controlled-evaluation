@@ -1,0 +1,1 @@
+{"p0":{"A":"PASS","B":"PASS","C":"FAIL","D":"BLOCKED","E":"BLOCKED","F":"PASS","G":"BLOCKED","H":"BLOCKED","I":"BLOCKED"},"recommendation":"NO-GO","scenarios":{"S180":{"cases":240,"planned":960,"token_status":"FAIL"},"S540":{"cases":600,"planned":2400,"token_status":"FAIL"}}}

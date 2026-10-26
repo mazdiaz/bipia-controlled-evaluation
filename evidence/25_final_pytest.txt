@@ -1,0 +1,369 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.0, pytest-8.4.2, pluggy-1.7.0 -- C:\Users\diazh\OneDrive\文档\bipia-controlled-evaluation\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\diazh\OneDrive\文档\bipia-controlled-evaluation
+configfile: pyproject.toml
+testpaths: tests
+collecting ... collected 45 items
+
+tests/test_data.py::test_audit_counts_overlap_and_blobs PASSED           [  2%]
+tests/test_data.py::test_canonical_ids_exact_unicode PASSED              [  4%]
+tests/test_data.py::test_insert_matches_upstream[A sentence. Second one! Third?-start] PASSED [  6%]
+tests/test_data.py::test_insert_matches_upstream[A sentence. Second one! Third?-middle] PASSED [  8%]
+tests/test_data.py::test_insert_matches_upstream[A sentence. Second one! Third?-end] PASSED [ 11%]
+tests/test_data.py::test_insert_matches_upstream[{x}\n\u4f60\u597d world.-start] PASSED [ 13%]
+tests/test_data.py::test_insert_matches_upstream[{x}\n\u4f60\u597d world.-middle] PASSED [ 15%]
+tests/test_data.py::test_insert_matches_upstream[{x}\n\u4f60\u597d world.-end] PASSED [ 17%]
+tests/test_data.py::test_insert_matches_upstream[One line-start] PASSED  [ 20%]
+tests/test_data.py::test_insert_matches_upstream[One line-middle] PASSED [ 22%]
+tests/test_data.py::test_insert_matches_upstream[One line-end] PASSED    [ 24%]
+tests/test_data.py::test_candidate_coverage_and_determinism[S180-180] PASSED [ 26%]
+tests/test_data.py::test_candidate_coverage_and_determinism[S540-540] PASSED [ 28%]
+tests/test_data.py::test_train_pool_excludes_all_test_sources_and_collision_family PASSED [ 31%]
+tests/test_extra_integrity.py::test_entire_scorer_map_against_inert_original_registration PASSED [ 33%]
+tests/test_extra_integrity.py::test_bootstrap_one_weight_per_source_exact_hand_calculation PASSED [ 35%]
+tests/test_extra_integrity.py::test_terminal_transport_error_and_actual_async_cancellation FAILED [ 37%]
+tests/test_extra_integrity.py::test_abrupt_subprocess_exit_preserves_plan_and_recovers FAILED [ 40%]
+tests/test_pipeline.py::test_pilot_is_train_only_and_nonoverlapping PASSED [ 42%]
+tests/test_pipeline.py::test_retry_crash_resumes_and_attempt_cap FAILED  [ 44%]
+tests/test_pipeline.py::test_expected_cells_not_silently_inferred_from_shortened_data PASSED [ 46%]
+tests/test_pipeline.py::test_build_offline_artifacts PASSED              [ 48%]
+tests/test_prompts.py::test_source_literals PASSED                       [ 51%]
+tests/test_prompts.py::test_exact_roles_and_source[email-email] PASSED   [ 53%]
+tests/test_prompts.py::test_exact_roles_and_source[table-form] PASSED    [ 55%]
+tests/test_prompts.py::test_token_counts_real_complete_messages_and_failures_reported PASSED [ 57%]
+tests/test_runner.py::test_plan_keys_order_and_hashes PASSED             [ 60%]
+tests/test_runner.py::test_mock_failures_order_resume_and_association FAILED [ 62%]
+tests/test_runner.py::test_interrupt_pending_explicit_and_resume FAILED  [ 64%]
+tests/test_runner.py::test_stale_plan_duplicate_and_foreign_results_rejected PASSED [ 66%]
+tests/test_scoring_analysis.py::test_registration_all_75_and_exact_prompts PASSED [ 68%]
+tests/test_scoring_analysis.py::test_exact_offline_judge_format PASSED   [ 71%]
+tests/test_scoring_analysis.py::test_judge_parsers[ YES\n-1-1] PASSED    [ 73%]
+tests/test_scoring_analysis.py::test_judge_parsers[no-0-0] PASSED        [ 75%]
+tests/test_scoring_analysis.py::test_judge_parsers[UNKNOWN-None-0] PASSED [ 77%]
+tests/test_scoring_analysis.py::test_judge_parsers[not yes-None-1] PASSED [ 80%]
+tests/test_scoring_analysis.py::test_judge_parsers[yesterday-None-1] PASSED [ 82%]
+tests/test_scoring_analysis.py::test_judge_parsers[YES.-None-1] PASSED   [ 84%]
+tests/test_scoring_analysis.py::test_judge_parsers[-None-0] PASSED       [ 86%]
+tests/test_scoring_analysis.py::test_judge_parsers[None-None-None] PASSED [ 88%]
+tests/test_scoring_analysis.py::test_synthetic_rule_scoring PASSED       [ 91%]
+tests/test_scoring_analysis.py::test_conservative_gold_and_utility PASSED [ 93%]
+tests/test_scoring_analysis.py::test_macro_is_cell_equal_and_source_bootstrap_reproducible PASSED [ 95%]
+tests/test_scoring_analysis.py::test_missingness_bounds_absent_cells_and_duplicate_rejection PASSED [ 97%]
+C:\Users\diazh\OneDrive\文档\bipia-controlled-evaluation\.venv\Lib\site-packages\_pytest\unraisableexception.py:33: RuntimeWarning: coroutine 'run_mock' was never awaited
+  gc.collect()
+RuntimeWarning: Enable tracemalloc to get the object allocation traceback
+C:\Users\diazh\OneDrive\文档\bipia-controlled-evaluation\.venv\Lib\site-packages\_pytest\unraisableexception.py:67: PytestUnraisableExceptionWarning: Exception ignored while calling deallocator <function BaseEventLoop.__del__ at 0x000002172BF5CEB0>: None
+
+Traceback (most recent call last):
+  File "C:\Users\diazh\AppData\Local\Programs\Python\Python314\Lib\asyncio\base_events.py", line 760, in __del__
+    self.close()
+    ~~~~~~~~~~^^
+  File "C:\Users\diazh\AppData\Local\Programs\Python\Python314\Lib\asyncio\proactor_events.py", line 694, in close
+    self._close_self_pipe()
+    ~~~~~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\diazh\AppData\Local\Programs\Python\Python314\Lib\asyncio\proactor_events.py", line 776, in _close_self_pipe
+    self._ssock.close()
+    ^^^^^^^^^^^
+AttributeError: 'ProactorEventLoop' object has no attribute '_ssock'
+
+
+  warnings.warn(pytest.PytestUnraisableExceptionWarning(msg))
+tests/test_scoring_analysis.py::test_simulation_stamp_and_reproducibility PASSED [100%]
+
+================================== FAILURES ===================================
+_________ test_terminal_transport_error_and_actual_async_cancellation _________
+
+tmp_path = WindowsPath('C:/Users/diazh/AppData/Local/Temp/pytest-of-diazh/pytest-125/test_terminal_transport_error_0')
+
+    def test_terminal_transport_error_and_actual_async_cancellation(tmp_path):
+        p = tiny_plan()
+        key = p[0]['invocation_id']
+        ledger = Ledger(tmp_path/'cancel.db',p)
+    
+        async def cancel_in_flight():
+            task = asyncio.create_task(run_mock(ledger,MockModel({key:['delay']}),timeout=.2,concurrency=1))
+            await asyncio.sleep(.05)
+            task.cancel()
+            with pytest.raises(asyncio.CancelledError):
+                await task
+>       asyncio.run(cancel_in_flight())
+
+tests\test_extra_integrity.py:67: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\asyncio\runners.py:203: in run
+    with Runner(debug=debug, loop_factory=loop_factory) as runner:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\asyncio\runners.py:59: in __enter__
+    self._lazy_init()
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\asyncio\runners.py:146: in _lazy_init
+    self._loop = events.new_event_loop()
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\asyncio\events.py:844: in new_event_loop
+    return _get_event_loop_policy().new_event_loop()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\asyncio\events.py:732: in new_event_loop
+    return self._loop_factory()
+           ^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\asyncio\windows_events.py:316: in __init__
+    super().__init__(proactor)
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\asyncio\proactor_events.py:637: in __init__
+    self._make_self_pipe()
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\asyncio\proactor_events.py:784: in _make_self_pipe
+    self._ssock, self._csock = socket.socketpair()
+                               ^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\socket.py:629: in _fallback_socketpair
+    csock.connect((addr, port))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+args = (<socket.socket [closed] fd=-1, family=2, type=1, proto=0>, ('127.0.0.1', 57547))
+kwargs = {}
+
+    def denied(*args,**kwargs):
+>       raise AssertionError('Tests are offline; prepare the public tokenizer cache before pytest')
+E       AssertionError: Tests are offline; prepare the public tokenizer cache before pytest
+
+tests\conftest.py:8: AssertionError
+___________ test_abrupt_subprocess_exit_preserves_plan_and_recovers ___________
+
+tmp_path = WindowsPath('C:/Users/diazh/AppData/Local/Temp/pytest-of-diazh/pytest-125/test_abrupt_subprocess_exit_pr0')
+
+    def test_abrupt_subprocess_exit_preserves_plan_and_recovers(tmp_path):
+        path = tmp_path/'crash.db'
+        code = "from preflight.runner import Ledger; from tests_helper import tiny_plan; import os,sys; p=tiny_plan(); l=Ledger(sys.argv[1],p); l.begin(p[0]['invocation_id']); os._exit(17)"
+        result = subprocess.run([sys.executable,'-c',code,str(path)],check=False,capture_output=True)
+        assert result.returncode==17, result.stderr
+        p = tiny_plan()
+        ledger = Ledger(path,p)
+        assert len(ledger.results())==len(p)
+        assert ledger.results()[0]['status']=='pending'
+>       asyncio.run(run_mock(ledger,MockModel()))
+
+tests\test_extra_integrity.py:86: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\asyncio\runners.py:203: in run
+    with Runner(debug=debug, loop_factory=loop_factory) as runner:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\asyncio\runners.py:59: in __enter__
+    self._lazy_init()
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\asyncio\runners.py:146: in _lazy_init
+    self._loop = events.new_event_loop()
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\asyncio\events.py:844: in new_event_loop
+    return _get_event_loop_policy().new_event_loop()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\asyncio\events.py:732: in new_event_loop
+    return self._loop_factory()
+           ^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\asyncio\windows_events.py:316: in __init__
+    super().__init__(proactor)
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\asyncio\proactor_events.py:637: in __init__
+    self._make_self_pipe()
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\asyncio\proactor_events.py:784: in _make_self_pipe
+    self._ssock, self._csock = socket.socketpair()
+                               ^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\socket.py:629: in _fallback_socketpair
+    csock.connect((addr, port))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+args = (<socket.socket [closed] fd=-1, family=2, type=1, proto=0>, ('127.0.0.1', 57548))
+kwargs = {}
+
+    def denied(*args,**kwargs):
+>       raise AssertionError('Tests are offline; prepare the public tokenizer cache before pytest')
+E       AssertionError: Tests are offline; prepare the public tokenizer cache before pytest
+
+tests\conftest.py:8: AssertionError
+__________________ test_retry_crash_resumes_and_attempt_cap ___________________
+
+tmp_path = WindowsPath('C:/Users/diazh/AppData/Local/Temp/pytest-of-diazh/pytest-125/test_retry_crash_resumes_and_a0')
+
+    def test_retry_crash_resumes_and_attempt_cap(tmp_path):
+        from tests_helper import tiny_plan
+        p = tiny_plan()
+        path = tmp_path/'retry.db'
+        ledger = Ledger(path,p)
+        key = p[0]['invocation_id']
+        for i in range(3):
+            ledger.begin(key)
+            ledger.finish(key,'retry',error='synthetic error')
+        ledger.close()
+        ledger = Ledger(path,p)
+>       asyncio.run(run_mock(ledger,MockModel()))
+
+tests\test_pipeline.py:35: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\asyncio\runners.py:203: in run
+    with Runner(debug=debug, loop_factory=loop_factory) as runner:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\asyncio\runners.py:59: in __enter__
+    self._lazy_init()
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\asyncio\runners.py:146: in _lazy_init
+    self._loop = events.new_event_loop()
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\asyncio\events.py:844: in new_event_loop
+    return _get_event_loop_policy().new_event_loop()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\asyncio\events.py:732: in new_event_loop
+    return self._loop_factory()
+           ^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\asyncio\windows_events.py:316: in __init__
+    super().__init__(proactor)
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\asyncio\proactor_events.py:637: in __init__
+    self._make_self_pipe()
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\asyncio\proactor_events.py:784: in _make_self_pipe
+    self._ssock, self._csock = socket.socketpair()
+                               ^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\socket.py:629: in _fallback_socketpair
+    csock.connect((addr, port))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+args = (<socket.socket [closed] fd=-1, family=2, type=1, proto=0>, ('127.0.0.1', 57549))
+kwargs = {}
+
+    def denied(*args,**kwargs):
+>       raise AssertionError('Tests are offline; prepare the public tokenizer cache before pytest')
+E       AssertionError: Tests are offline; prepare the public tokenizer cache before pytest
+
+tests\conftest.py:8: AssertionError
+_______________ test_mock_failures_order_resume_and_association _______________
+
+tmp_path = WindowsPath('C:/Users/diazh/AppData/Local/Temp/pytest-of-diazh/pytest-125/test_mock_failures_order_resum0')
+
+    def test_mock_failures_order_resume_and_association(tmp_path):
+        p = synthetic_plan()
+        db = tmp_path/'run.db'
+        ledger = Ledger(db, p)
+        keys = [r['invocation_id'] for r in p]
+        script = {keys[0]: ['error', 'ok'], keys[1]: ['timeout']*3,
+                  keys[2]: ['empty'], keys[3]: ['truncated'], keys[4]: ['wrong_key'],
+                  keys[5]: ['delay', 'ok']}
+        model = MockModel(script)
+>       asyncio.run(run_mock(ledger, model, timeout=.1))
+
+tests\test_runner.py:33: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\asyncio\runners.py:203: in run
+    with Runner(debug=debug, loop_factory=loop_factory) as runner:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\asyncio\runners.py:59: in __enter__
+    self._lazy_init()
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\asyncio\runners.py:146: in _lazy_init
+    self._loop = events.new_event_loop()
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\asyncio\events.py:844: in new_event_loop
+    return _get_event_loop_policy().new_event_loop()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\asyncio\events.py:732: in new_event_loop
+    return self._loop_factory()
+           ^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\asyncio\windows_events.py:316: in __init__
+    super().__init__(proactor)
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\asyncio\proactor_events.py:637: in __init__
+    self._make_self_pipe()
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\asyncio\proactor_events.py:784: in _make_self_pipe
+    self._ssock, self._csock = socket.socketpair()
+                               ^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\socket.py:629: in _fallback_socketpair
+    csock.connect((addr, port))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+args = (<socket.socket [closed] fd=-1, family=2, type=1, proto=0>, ('127.0.0.1', 57550))
+kwargs = {}
+
+    def denied(*args,**kwargs):
+>       raise AssertionError('Tests are offline; prepare the public tokenizer cache before pytest')
+E       AssertionError: Tests are offline; prepare the public tokenizer cache before pytest
+
+tests\conftest.py:8: AssertionError
+_________________ test_interrupt_pending_explicit_and_resume __________________
+
+tmp_path = WindowsPath('C:/Users/diazh/AppData/Local/Temp/pytest-of-diazh/pytest-125/test_interrupt_pending_explici0')
+
+    def test_interrupt_pending_explicit_and_resume(tmp_path):
+        p = synthetic_plan()
+        ledger = Ledger(tmp_path/'run.db', p)
+        # Seed one in-flight request to represent process death between dispatch and reply.
+        ledger.begin(p[0]['invocation_id'])
+        ledger.close()
+        ledger = Ledger(tmp_path/'run.db', p)
+        assert ledger.results()[0]['status'] == 'pending'
+        assert ledger.results()[0]['attempts'] == 1
+        assert len(ledger.results()) == len(p)
+>       asyncio.run(run_mock(ledger, MockModel(), stop_after=3))
+
+tests\test_runner.py:62: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\asyncio\runners.py:203: in run
+    with Runner(debug=debug, loop_factory=loop_factory) as runner:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\asyncio\runners.py:59: in __enter__
+    self._lazy_init()
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\asyncio\runners.py:146: in _lazy_init
+    self._loop = events.new_event_loop()
+                 ^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\asyncio\events.py:844: in new_event_loop
+    return _get_event_loop_policy().new_event_loop()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\asyncio\events.py:732: in new_event_loop
+    return self._loop_factory()
+           ^^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\asyncio\windows_events.py:316: in __init__
+    super().__init__(proactor)
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\asyncio\proactor_events.py:637: in __init__
+    self._make_self_pipe()
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\asyncio\proactor_events.py:784: in _make_self_pipe
+    self._ssock, self._csock = socket.socketpair()
+                               ^^^^^^^^^^^^^^^^^^^
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\socket.py:629: in _fallback_socketpair
+    csock.connect((addr, port))
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+args = (<socket.socket [closed] fd=-1, family=2, type=1, proto=0>, ('127.0.0.1', 57551))
+kwargs = {}
+
+    def denied(*args,**kwargs):
+>       raise AssertionError('Tests are offline; prepare the public tokenizer cache before pytest')
+E       AssertionError: Tests are offline; prepare the public tokenizer cache before pytest
+
+tests\conftest.py:8: AssertionError
+============================== warnings summary ===============================
+tests/test_pipeline.py::test_build_offline_artifacts
+  C:\Users\diazh\OneDrive\文档\bipia-controlled-evaluation\preflight\tokens.py:46: RuntimeWarning: coroutine 'test_terminal_transport_error_and_actual_async_cancellation.<locals>.cancel_in_flight' was never awaited
+    vocab_hash = digest([[k.hex(), v] for k, v in sorted(enc._mergeable_ranks.items(), key=lambda kv: kv[1])])
+  Enable tracemalloc to get traceback where the object was allocated.
+  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
+
+tests/test_pipeline.py::test_build_offline_artifacts
+  C:\Users\diazh\OneDrive\文档\bipia-controlled-evaluation\preflight\tokens.py:46: RuntimeWarning: coroutine 'run_mock' was never awaited
+    vocab_hash = digest([[k.hex(), v] for k, v in sorted(enc._mergeable_ranks.items(), key=lambda kv: kv[1])])
+  Enable tracemalloc to get traceback where the object was allocated.
+  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
+
+tests/test_pipeline.py::test_build_offline_artifacts
+  C:\Users\diazh\OneDrive\文档\bipia-controlled-evaluation\.venv\Lib\site-packages\_pytest\unraisableexception.py:67: PytestUnraisableExceptionWarning: Exception ignored while calling deallocator <function BaseEventLoop.__del__ at 0x000002172BF5CEB0>: None
+  
+  Traceback (most recent call last):
+    File "C:\Users\diazh\AppData\Local\Programs\Python\Python314\Lib\asyncio\base_events.py", line 760, in __del__
+      self.close()
+      ~~~~~~~~~~^^
+    File "C:\Users\diazh\AppData\Local\Programs\Python\Python314\Lib\asyncio\proactor_events.py", line 694, in close
+      self._close_self_pipe()
+      ~~~~~~~~~~~~~~~~~~~~~^^
+    File "C:\Users\diazh\AppData\Local\Programs\Python\Python314\Lib\asyncio\proactor_events.py", line 776, in _close_self_pipe
+      self._ssock.close()
+      ^^^^^^^^^^^
+  AttributeError: 'ProactorEventLoop' object has no attribute '_ssock'
+  
+  
+    warnings.warn(pytest.PytestUnraisableExceptionWarning(msg))
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+- generated xml file: C:\Users\diazh\OneDrive\文档\bipia-controlled-evaluation\evidence\pytest.xml -
+=========================== short test summary info ===========================
+FAILED tests/test_extra_integrity.py::test_terminal_transport_error_and_actual_async_cancellation
+FAILED tests/test_extra_integrity.py::test_abrupt_subprocess_exit_preserves_plan_and_recovers
+FAILED tests/test_pipeline.py::test_retry_crash_resumes_and_attempt_cap - Ass...
+FAILED tests/test_runner.py::test_mock_failures_order_resume_and_association
+FAILED tests/test_runner.py::test_interrupt_pending_explicit_and_resume - Ass...
+================== 5 failed, 40 passed, 3 warnings in 10.26s ==================

@@ -1,0 +1,19 @@
+F.............                                                           [100%]
+================================== FAILURES ===================================
+_____________________ test_audit_counts_overlap_and_blobs _____________________
+
+    def test_audit_counts_overlap_and_blobs():
+        result = audit(REPO)
+        assert result['commit'] == 'a004b69ec0dd446e0afd461d98cb5e96e120a5d0'
+        for task, counts in [('email', (50, 50, 45, 44, 11)), ('table', (900, 100, 617, 84, 0))]:
+            r = result['tasks'][task]
+            assert tuple(r[k] for k in ['train_rows', 'test_rows', 'train_groups', 'test_groups', 'overlap_groups']) == counts
+        assert len(result['files']) >= 16
+>       assert all(f['working_tree_matches_blob'] for f in result['files'].values())
+E       assert False
+E        +  where False = all(<generator object test_audit_counts_overlap_and_blobs.<locals>.<genexpr> at 0x00000196C1D431D0>)
+
+tests\test_data.py:21: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_data.py::test_audit_counts_overlap_and_blobs - assert False
+1 failed, 13 passed in 4.03s

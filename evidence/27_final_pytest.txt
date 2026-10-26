@@ -1,0 +1,56 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.0, pytest-8.4.2, pluggy-1.7.0 -- C:\Users\diazh\OneDrive\文档\bipia-controlled-evaluation\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: C:\Users\diazh\OneDrive\文档\bipia-controlled-evaluation
+configfile: pyproject.toml
+testpaths: tests
+collecting ... collected 45 items
+
+tests/test_data.py::test_audit_counts_overlap_and_blobs PASSED           [  2%]
+tests/test_data.py::test_canonical_ids_exact_unicode PASSED              [  4%]
+tests/test_data.py::test_insert_matches_upstream[A sentence. Second one! Third?-start] PASSED [  6%]
+tests/test_data.py::test_insert_matches_upstream[A sentence. Second one! Third?-middle] PASSED [  8%]
+tests/test_data.py::test_insert_matches_upstream[A sentence. Second one! Third?-end] PASSED [ 11%]
+tests/test_data.py::test_insert_matches_upstream[{x}\n\u4f60\u597d world.-start] PASSED [ 13%]
+tests/test_data.py::test_insert_matches_upstream[{x}\n\u4f60\u597d world.-middle] PASSED [ 15%]
+tests/test_data.py::test_insert_matches_upstream[{x}\n\u4f60\u597d world.-end] PASSED [ 17%]
+tests/test_data.py::test_insert_matches_upstream[One line-start] PASSED  [ 20%]
+tests/test_data.py::test_insert_matches_upstream[One line-middle] PASSED [ 22%]
+tests/test_data.py::test_insert_matches_upstream[One line-end] PASSED    [ 24%]
+tests/test_data.py::test_candidate_coverage_and_determinism[S180-180] PASSED [ 26%]
+tests/test_data.py::test_candidate_coverage_and_determinism[S540-540] PASSED [ 28%]
+tests/test_data.py::test_train_pool_excludes_all_test_sources_and_collision_family PASSED [ 31%]
+tests/test_extra_integrity.py::test_entire_scorer_map_against_inert_original_registration PASSED [ 33%]
+tests/test_extra_integrity.py::test_bootstrap_one_weight_per_source_exact_hand_calculation PASSED [ 35%]
+tests/test_extra_integrity.py::test_terminal_transport_error_and_actual_async_cancellation PASSED [ 37%]
+tests/test_extra_integrity.py::test_abrupt_subprocess_exit_preserves_plan_and_recovers PASSED [ 40%]
+tests/test_pipeline.py::test_pilot_is_train_only_and_nonoverlapping PASSED [ 42%]
+tests/test_pipeline.py::test_retry_crash_resumes_and_attempt_cap PASSED  [ 44%]
+tests/test_pipeline.py::test_expected_cells_not_silently_inferred_from_shortened_data PASSED [ 46%]
+tests/test_pipeline.py::test_build_offline_artifacts PASSED              [ 48%]
+tests/test_prompts.py::test_source_literals PASSED                       [ 51%]
+tests/test_prompts.py::test_exact_roles_and_source[email-email] PASSED   [ 53%]
+tests/test_prompts.py::test_exact_roles_and_source[table-form] PASSED    [ 55%]
+tests/test_prompts.py::test_token_counts_real_complete_messages_and_failures_reported PASSED [ 57%]
+tests/test_runner.py::test_plan_keys_order_and_hashes PASSED             [ 60%]
+tests/test_runner.py::test_mock_failures_order_resume_and_association PASSED [ 62%]
+tests/test_runner.py::test_interrupt_pending_explicit_and_resume PASSED  [ 64%]
+tests/test_runner.py::test_stale_plan_duplicate_and_foreign_results_rejected PASSED [ 66%]
+tests/test_scoring_analysis.py::test_registration_all_75_and_exact_prompts PASSED [ 68%]
+tests/test_scoring_analysis.py::test_exact_offline_judge_format PASSED   [ 71%]
+tests/test_scoring_analysis.py::test_judge_parsers[ YES\n-1-1] PASSED    [ 73%]
+tests/test_scoring_analysis.py::test_judge_parsers[no-0-0] PASSED        [ 75%]
+tests/test_scoring_analysis.py::test_judge_parsers[UNKNOWN-None-0] PASSED [ 77%]
+tests/test_scoring_analysis.py::test_judge_parsers[not yes-None-1] PASSED [ 80%]
+tests/test_scoring_analysis.py::test_judge_parsers[yesterday-None-1] PASSED [ 82%]
+tests/test_scoring_analysis.py::test_judge_parsers[YES.-None-1] PASSED   [ 84%]
+tests/test_scoring_analysis.py::test_judge_parsers[-None-0] PASSED       [ 86%]
+tests/test_scoring_analysis.py::test_judge_parsers[None-None-None] PASSED [ 88%]
+tests/test_scoring_analysis.py::test_synthetic_rule_scoring PASSED       [ 91%]
+tests/test_scoring_analysis.py::test_conservative_gold_and_utility PASSED [ 93%]
+tests/test_scoring_analysis.py::test_macro_is_cell_equal_and_source_bootstrap_reproducible PASSED [ 95%]
+tests/test_scoring_analysis.py::test_missingness_bounds_absent_cells_and_duplicate_rejection PASSED [ 97%]
+tests/test_scoring_analysis.py::test_simulation_stamp_and_reproducibility PASSED [100%]
+
+- generated xml file: C:\Users\diazh\OneDrive\文档\bipia-controlled-evaluation\evidence\pytest.xml -
+============================= 45 passed in 10.14s =============================

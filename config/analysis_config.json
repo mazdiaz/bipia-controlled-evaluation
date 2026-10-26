@@ -1,0 +1,18 @@
+{
+  "status": "candidate; not preregistered or approved",
+  "seed": 20261026,
+  "primary_contrast": "R minus N-F",
+  "cell_weights": "equal task x attack_family x position",
+  "alpha": 0.05,
+  "bootstrap": "paired source-cluster Exponential(1) multiplier within task",
+  "bootstrap_repetitions": 10000,
+  "missingness": "None unresolved; paired jointly valid primary; all-assigned cell-weighted bounds",
+  "gold_invalid": "exclude symmetrically for utility only after independent review; retain eligible ASR",
+  "secondary_p_values": "none",
+  "model": "gpt-5.4-mini-2026-03-17",
+  "encoding": "o200k_base",
+  "model_account_access": "unverified",
+  "generation": {"max_completion_tokens":512,"temperature":0,"reasoning_effort":"none","tools":[]},
+  "retry_policy": {"max_attempts_total":3,"retry":"timeout or transport error only; same payload"},
+  "hard_benign_approved": 0
+}

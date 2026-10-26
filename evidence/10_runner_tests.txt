@@ -1,0 +1,27 @@
+.F..                                                                     [100%]
+================================== FAILURES ===================================
+_______________ test_mock_failures_order_resume_and_association _______________
+
+tmp_path = WindowsPath('C:/Users/diazh/AppData/Local/Temp/pytest-of-diazh/pytest-119/test_mock_failures_order_resum0')
+
+    def test_mock_failures_order_resume_and_association(tmp_path):
+        p = synthetic_plan()
+        db = tmp_path/'run.db'
+        ledger = Ledger(db, p)
+        keys = [r['invocation_id'] for r in p]
+        script = {keys[0]: ['error', 'ok'], keys[1]: ['timeout']*3,
+                  keys[2]: ['empty'], keys[3]: ['truncated'], keys[4]: ['wrong_key'],
+                  keys[5]: ['delay', 'ok']}
+        model = MockModel(script)
+        asyncio.run(run_mock(ledger, model, timeout=.01))
+        rows = ledger.results()
+        assert validate_join(p, rows)['misattributed'] == 0
+>       assert rows[0]['status'] == 'ok' and rows[0]['attempts'] == 2
+E       AssertionError: assert ('ok' == 'ok'
+E         
+E           ok and 3 == 2)
+
+tests\test_runner.py:36: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_runner.py::test_mock_failures_order_resume_and_association
+1 failed, 3 passed in 0.54s

@@ -1,0 +1,142 @@
+F..........FFF                                                           [100%]
+================================== FAILURES ===================================
+_____________________ test_audit_counts_overlap_and_blobs _____________________
+
+    def test_audit_counts_overlap_and_blobs():
+        result = audit(REPO)
+        assert result['commit'] == 'a004b69ec0dd446e0afd461d98cb5e96e120a5d0'
+        for task, counts in [('email', (50, 50, 45, 44, 11)), ('table', (900, 100, 617, 84, 0))]:
+            r = result['tasks'][task]
+            assert tuple(r[k] for k in ['train_rows', 'test_rows', 'train_groups', 'test_groups', 'overlap_groups']) == counts
+        assert len(result['files']) >= 16
+>       assert all(f['working_tree_matches_blob'] for f in result['files'].values())
+E       assert False
+E        +  where False = all(<generator object test_audit_counts_overlap_and_blobs.<locals>.<genexpr> at 0x0000026AFC5B31D0>)
+
+tests\test_data.py:21: AssertionError
+______________ test_candidate_coverage_and_determinism[S180-180] ______________
+
+scenario = 'S180', n = 180
+
+    @pytest.mark.parametrize('scenario,n', [('S180', 180), ('S540', 540)])
+    def test_candidate_coverage_and_determinism(scenario, n):
+>       a = candidates(REPO, scenario, 20261026)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_data.py:49: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+preflight\data.py:192: in candidates
+    cases.append(make_case(row, attack, position, seed))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+[source-data argument repr redacted; original preserved locally in artifacts/evidence_raw/03_data_tests.txt]
+attack = {'attack_family': 'Misinformation & Propaganda', 'attack_id': '0516d5e315e8e72919e3ad24cca8b8a3699b21d1bf2567d0f5d59953abe4a361', 'attack_name': 'Misinformation & Propaganda-2', 'attack_split': 'test', ...}
+position = 'end', seed = 20261026
+
+    def make_case(row, attack, position, seed):
+        if (attack is None) != (position is None):
+            raise ValueError('attack/position must both be specified or absent')
+        context, offset = insert(row['context'], attack['payload'], position, seed) if attack else (row['context'], None)
+        identity = dict(base_id=row['base_id'], case_type='attacked' if attack else 'clean',
+            attack_id=attack['attack_id'] if attack else None, position=position,
+            insertion_seed=seed if attack else None, context_sha256=digest(context))
+>       return dict(row, **(attack or {}), case_id=digest(identity), case_type=identity['case_type'],
+            schema_version='04.1', source_repo='microsoft/BIPIA', repo_commit=COMMIT,
+            original_context=row['context'], context=context, attacked_context_sha256=digest(context),
+            attack_id=identity['attack_id'], position=position,
+            position_id=digest([position, seed, offset]) if attack else None,
+            insertion_seed=seed if attack else None, insertion_offset=offset,
+            insertion_byte_offset=len(row['context'][:offset].encode()) if attack else None,
+            effective_relative_offset=offset/len(row['context']) if attack and row['context'] else None,
+            candidate_only=True)
+E       TypeError: dict() got multiple values for keyword argument 'attack_id'
+
+preflight\data.py:127: TypeError
+______________ test_candidate_coverage_and_determinism[S540-540] ______________
+
+scenario = 'S540', n = 540
+
+    @pytest.mark.parametrize('scenario,n', [('S180', 180), ('S540', 540)])
+    def test_candidate_coverage_and_determinism(scenario, n):
+>       a = candidates(REPO, scenario, 20261026)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_data.py:49: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+preflight\data.py:192: in candidates
+    cases.append(make_case(row, attack, position, seed))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+[source-data argument repr redacted; original preserved locally in artifacts/evidence_raw/03_data_tests.txt]
+attack = {'attack_family': 'Misinformation & Propaganda', 'attack_id': '0516d5e315e8e72919e3ad24cca8b8a3699b21d1bf2567d0f5d59953abe4a361', 'attack_name': 'Misinformation & Propaganda-2', 'attack_split': 'test', ...}
+position = 'end', seed = 20261026
+
+    def make_case(row, attack, position, seed):
+        if (attack is None) != (position is None):
+            raise ValueError('attack/position must both be specified or absent')
+        context, offset = insert(row['context'], attack['payload'], position, seed) if attack else (row['context'], None)
+        identity = dict(base_id=row['base_id'], case_type='attacked' if attack else 'clean',
+            attack_id=attack['attack_id'] if attack else None, position=position,
+            insertion_seed=seed if attack else None, context_sha256=digest(context))
+>       return dict(row, **(attack or {}), case_id=digest(identity), case_type=identity['case_type'],
+            schema_version='04.1', source_repo='microsoft/BIPIA', repo_commit=COMMIT,
+            original_context=row['context'], context=context, attacked_context_sha256=digest(context),
+            attack_id=identity['attack_id'], position=position,
+            position_id=digest([position, seed, offset]) if attack else None,
+            insertion_seed=seed if attack else None, insertion_offset=offset,
+            insertion_byte_offset=len(row['context'][:offset].encode()) if attack else None,
+            effective_relative_offset=offset/len(row['context']) if attack and row['context'] else None,
+            candidate_only=True)
+E       TypeError: dict() got multiple values for keyword argument 'attack_id'
+
+preflight\data.py:127: TypeError
+_______ test_train_pool_excludes_all_test_sources_and_collision_family ________
+
+    def test_train_pool_excludes_all_test_sources_and_collision_family():
+        for task in ['email', 'table']:
+            test = load_rows(REPO, task, 'test')
+            train = load_rows(REPO, task, 'train', development=True)
+            assert not {r['source_group_id'] for r in train} & {r['source_group_id'] for r in test}
+        assert 'Language Translation' not in {a['attack_family'] for a in load_attacks(REPO, 'train', development=True)}
+        train = load_attacks(REPO, 'train')
+        test = load_attacks(REPO, 'test')
+        assert len(train) == len(test) == 75
+        assert not {a['attack_id'] for a in train} & {a['attack_id'] for a in test}
+        row = load_rows(REPO, 'email', 'test')[0]
+>       assert make_case(row, None, None, 1)['case_id'] != make_case(row, test[0], 'start', 1)['case_id']
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+tests\test_data.py:79: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+[source-data argument repr redacted; original preserved locally in artifacts/evidence_raw/03_data_tests.txt]
+attack = {'attack_family': 'Task Automation', 'attack_id': '727f0e3c388c8afffb3f038eeab0e50ff44a52476236e94e32ea90b642ad313c', 'attack_name': 'Task Automation-0', 'attack_split': 'test', ...}
+position = 'start', seed = 1
+
+    def make_case(row, attack, position, seed):
+        if (attack is None) != (position is None):
+            raise ValueError('attack/position must both be specified or absent')
+        context, offset = insert(row['context'], attack['payload'], position, seed) if attack else (row['context'], None)
+        identity = dict(base_id=row['base_id'], case_type='attacked' if attack else 'clean',
+            attack_id=attack['attack_id'] if attack else None, position=position,
+            insertion_seed=seed if attack else None, context_sha256=digest(context))
+>       return dict(row, **(attack or {}), case_id=digest(identity), case_type=identity['case_type'],
+            schema_version='04.1', source_repo='microsoft/BIPIA', repo_commit=COMMIT,
+            original_context=row['context'], context=context, attacked_context_sha256=digest(context),
+            attack_id=identity['attack_id'], position=position,
+            position_id=digest([position, seed, offset]) if attack else None,
+            insertion_seed=seed if attack else None, insertion_offset=offset,
+            insertion_byte_offset=len(row['context'][:offset].encode()) if attack else None,
+            effective_relative_offset=offset/len(row['context']) if attack and row['context'] else None,
+            candidate_only=True)
+E       TypeError: dict() got multiple values for keyword argument 'attack_id'
+
+preflight\data.py:127: TypeError
+=========================== short test summary info ===========================
+FAILED tests/test_data.py::test_audit_counts_overlap_and_blobs - assert False
+FAILED tests/test_data.py::test_candidate_coverage_and_determinism[S180-180]
+FAILED tests/test_data.py::test_candidate_coverage_and_determinism[S540-540]
+FAILED tests/test_data.py::test_train_pool_excludes_all_test_sources_and_collision_family
+4 failed, 10 passed in 3.20s

@@ -1,0 +1,16 @@
+
+=================================== ERRORS ====================================
+_______________ ERROR collecting tests/test_scoring_analysis.py _______________
+ImportError while importing test module 'C:\Users\diazh\OneDrive\文档\bipia-controlled-evaluation\tests\test_scoring_analysis.py'.
+Hint: make sure your test modules/packages have valid Python names.
+Traceback:
+..\..\..\AppData\Local\Programs\Python\Python314\Lib\importlib\__init__.py:88: in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests\test_scoring_analysis.py:5: in <module>
+    from preflight.scoring import registry, strict_parse, compatibility_parse, attack_score, normalize, answer_score, completion_summary, judge_prompt
+E   ImportError: cannot import name 'judge_prompt' from 'preflight.scoring' (C:\Users\diazh\OneDrive\文档\bipia-controlled-evaluation\preflight\scoring.py)
+=========================== short test summary info ===========================
+ERROR tests/test_scoring_analysis.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+1 error in 0.54s

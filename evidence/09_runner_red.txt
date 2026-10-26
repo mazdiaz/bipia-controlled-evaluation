@@ -1,0 +1,8 @@
+
+=================================== ERRORS ====================================
+____________________ ERROR collecting tests/test_runner.py ____________________
+ImportError while importing test module 'C:\\Users\\diazh\\OneDrive\\\u6587\u6863\\bipia-controlled-evaluation\\tests\\test_runner.py'.\nHint: make sure your test modules/packages have valid Python names.\nTraceback:\n..\\..\\..\\AppData\\Local\\Programs\\Python\\Python314\\Lib\\importlib\\__init__.py:88: in import_module\n    return _bootstrap._gcd_import(name[level:], package, level)\n           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\ntests\\test_runner.py:8: in <module>\n    from preflight.runner import Ledger, MockModel, run_mock, plan, validate_join\nE   ModuleNotFoundError: No module named 'preflight.runner'
+=========================== short test summary info ===========================
+ERROR tests/test_runner.py
+!!!!!!!!!!!!!!!!!!! Interrupted: 1 error during collection !!!!!!!!!!!!!!!!!!!!
+1 error in 0.16s

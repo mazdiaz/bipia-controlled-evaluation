@@ -1,0 +1,29 @@
+...FF                                                                    [100%]
+================================== FAILURES ===================================
+________________________ test_build_offline_artifacts _________________________
+
+tmp_path = WindowsPath('C:/Users/diazh/AppData/Local/Temp/pytest-of-diazh/pytest-127/test_build_offline_artifacts0')
+
+    def test_build_offline_artifacts(tmp_path):
+        build(Path('vendor/BIPIA'),tmp_path,scenarios=('S180',),bootstrap_repetitions=20, mock=False)
+        summary = json.loads((tmp_path/'summary.json').read_text())
+        assert summary['recommendation']=='NO-GO'
+        assert summary['scenarios']['S180']['cases']==240
+        assert summary['scenarios']['S180']['planned_invocations']==960
+        assert summary['scenarios']['S180']['tokens']['status']=='FAIL'
+>       assert summary['pilot_candidate']['tokens']['cases']==40
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       KeyError: 'tokens'
+
+tests\test_pipeline.py:52: KeyError
+_____ test_accounting_uses_keyed_metadata_and_retains_failed_denominators _____
+
+    def test_accounting_uses_keyed_metadata_and_retains_failed_denominators():
+>       from preflight.pipeline import invocation_accounting
+E       ImportError: cannot import name 'invocation_accounting' from 'preflight.pipeline' (C:\Users\diazh\OneDrive\文档\bipia-controlled-evaluation\preflight\pipeline.py)
+
+tests\test_pipeline.py:59: ImportError
+=========================== short test summary info ===========================
+FAILED tests/test_pipeline.py::test_build_offline_artifacts - KeyError: 'tokens'
+FAILED tests/test_pipeline.py::test_accounting_uses_keyed_metadata_and_retains_failed_denominators
+2 failed, 3 passed in 4.61s
