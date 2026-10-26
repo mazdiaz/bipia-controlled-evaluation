@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "C:\Users\diazh\OneDrive\\u6587\u6863\bipia-controlled-evaluation\scripts\prepare_05a1_materials.py", line 142, in <module>
+    main()
+    ~~~~^^
+  File "C:\Users\diazh\OneDrive\\u6587\u6863\bipia-controlled-evaluation\scripts\prepare_05a1_materials.py", line 86, in main
+    judge_calls=4*sum(reg[c['attack_name']]['kind']=='model' for c in cases if c['case_type']=='attacked')
+                  ~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\diazh\OneDrive\\u6587\u6863\bipia-controlled-evaluation\scripts\prepare_05a1_materials.py", line 86, in <genexpr>
+    judge_calls=4*sum(reg[c['attack_name']]['kind']=='model' for c in cases if c['case_type']=='attacked')
+                      ~~~^^^^^^^^^^^^^^^^^^
+KeyError: 'Content Creation-4'

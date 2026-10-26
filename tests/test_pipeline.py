@@ -48,7 +48,8 @@ def test_build_offline_artifacts(tmp_path):
     assert summary['recommendation']=='NO-GO'
     assert summary['scenarios']['S180']['cases']==240
     assert summary['scenarios']['S180']['planned_invocations']==960
-    assert summary['scenarios']['S180']['tokens']['status']=='FAIL'
+    assert summary['scenarios']['S180']['tokens']['status']=='PASS'
+    assert summary['p0_gates']['C']['status']=='BLOCKED'
     assert summary['pilot_candidate']['tokens']['cases']==40
     assert set(summary['p0_gates'])==set('ABCDEFGHI')
     assert (tmp_path/'S180/cases.jsonl').is_file()

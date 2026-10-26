@@ -50,4 +50,4 @@ def token_report(cases):
         regex_sha256=digest(enc._pat_str), cache_hashes={p.name: digest(p.read_bytes()) for p in sorted(cache.glob('*')) if p.is_file()},
         cases=len(details), mismatched_cases=sum(r['delta_NL_R'] != 0 or r['delta_NF_R'] != 0 for r in details),
         status='FAIL' if any(r['delta_NL_R'] or r['delta_NF_R'] for r in details) else 'PASS',
-        control_revision='none; protocol primary drafts', groups=grouped), details
+        control_revision='05A1 revision_4; human semantic approval PENDING', groups=grouped), details

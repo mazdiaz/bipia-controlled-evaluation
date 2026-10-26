@@ -1,0 +1,109 @@
+...FFFFF....F.                                                           [100%]
+================================== FAILURES ===================================
+_______ test_token_counts_real_complete_messages_and_exact_match[S180] ________
+
+scenario = 'S180'
+
+    @pytest.mark.parametrize('scenario', ['S180', 'S540', 'pilot_CANDIDATE'])
+    def test_token_counts_real_complete_messages_and_exact_match(scenario):
+        from preflight.data import pilot_candidates
+        enc = encoding()
+        assert enc.name == 'o200k_base'
+        cases = (pilot_candidates(REPO, 20261026) if scenario == 'pilot_CANDIDATE'
+                 else candidates(REPO, scenario, 20261026))
+        report, details = token_report(cases)
+        assert len(details) == {'S180':240, 'S540':600, 'pilot_CANDIDATE':40}[scenario]
+        assert report['cases'] == len(cases)
+>       assert report['mismatched_cases'] == 0
+E       assert 240 == 0
+
+tests\test_prompts.py:50: AssertionError
+_______ test_token_counts_real_complete_messages_and_exact_match[S540] ________
+
+scenario = 'S540'
+
+    @pytest.mark.parametrize('scenario', ['S180', 'S540', 'pilot_CANDIDATE'])
+    def test_token_counts_real_complete_messages_and_exact_match(scenario):
+        from preflight.data import pilot_candidates
+        enc = encoding()
+        assert enc.name == 'o200k_base'
+        cases = (pilot_candidates(REPO, 20261026) if scenario == 'pilot_CANDIDATE'
+                 else candidates(REPO, scenario, 20261026))
+        report, details = token_report(cases)
+        assert len(details) == {'S180':240, 'S540':600, 'pilot_CANDIDATE':40}[scenario]
+        assert report['cases'] == len(cases)
+>       assert report['mismatched_cases'] == 0
+E       assert 600 == 0
+
+tests\test_prompts.py:50: AssertionError
+__ test_token_counts_real_complete_messages_and_exact_match[pilot_CANDIDATE] __
+
+scenario = 'pilot_CANDIDATE'
+
+    @pytest.mark.parametrize('scenario', ['S180', 'S540', 'pilot_CANDIDATE'])
+    def test_token_counts_real_complete_messages_and_exact_match(scenario):
+        from preflight.data import pilot_candidates
+        enc = encoding()
+        assert enc.name == 'o200k_base'
+        cases = (pilot_candidates(REPO, 20261026) if scenario == 'pilot_CANDIDATE'
+                 else candidates(REPO, scenario, 20261026))
+        report, details = token_report(cases)
+        assert len(details) == {'S180':240, 'S540':600, 'pilot_CANDIDATE':40}[scenario]
+        assert report['cases'] == len(cases)
+>       assert report['mismatched_cases'] == 0
+E       assert 40 == 0
+
+tests\test_prompts.py:50: AssertionError
+___________ test_revised_literal_controls_share_words[email-email] ____________
+
+task = 'email', noun = 'email'
+
+    @pytest.mark.parametrize('task,noun', [('email','email'), ('table','form')])
+    def test_revised_literal_controls_share_words(task, noun):
+        import re
+>       assert guidance(task,'N-L') == f' The following {noun} contains written text, including letters, spaces, numerals, and punctuation'
+E       AssertionError: assert ' This email ...used in text.' == ' The followi...d punctuation'
+E         
+E         -  The following email contains written text, including letters, spaces, numerals, and punctuation
+E         +  This email is a piece of written material containing words, spaces, numerals, and various marks used in text.
+
+tests\test_prompts.py:65: AssertionError
+____________ test_revised_literal_controls_share_words[table-form] ____________
+
+task = 'table', noun = 'form'
+
+    @pytest.mark.parametrize('task,noun', [('email','email'), ('table','form')])
+    def test_revised_literal_controls_share_words(task, noun):
+        import re
+>       assert guidance(task,'N-L') == f' The following {noun} contains written text, including letters, spaces, numerals, and punctuation'
+E       AssertionError: assert ' This form i...used in text.' == ' The followi...d punctuation'
+E         
+E         -  The following form contains written text, including letters, spaces, numerals, and punctuation
+E         +  This form is a piece of written material containing words, spaces, numerals, and various marks used in text.
+
+tests\test_prompts.py:65: AssertionError
+________________________ test_build_offline_artifacts _________________________
+
+tmp_path = WindowsPath('C:/Users/diazh/AppData/Local/Temp/pytest-of-diazh/pytest-129/test_build_offline_artifacts0')
+
+    def test_build_offline_artifacts(tmp_path):
+        build(Path('vendor/BIPIA'),tmp_path,scenarios=('S180',),bootstrap_repetitions=20, mock=False)
+        summary = json.loads((tmp_path/'summary.json').read_text())
+        assert summary['recommendation']=='NO-GO'
+        assert summary['scenarios']['S180']['cases']==240
+        assert summary['scenarios']['S180']['planned_invocations']==960
+>       assert summary['scenarios']['S180']['tokens']['status']=='PASS'
+E       AssertionError: assert 'FAIL' == 'PASS'
+E         
+E         - PASS
+E         + FAIL
+
+tests\test_pipeline.py:51: AssertionError
+=========================== short test summary info ===========================
+FAILED tests/test_prompts.py::test_token_counts_real_complete_messages_and_exact_match[S180]
+FAILED tests/test_prompts.py::test_token_counts_real_complete_messages_and_exact_match[S540]
+FAILED tests/test_prompts.py::test_token_counts_real_complete_messages_and_exact_match[pilot_CANDIDATE]
+FAILED tests/test_prompts.py::test_revised_literal_controls_share_words[email-email]
+FAILED tests/test_prompts.py::test_revised_literal_controls_share_words[table-form]
+FAILED tests/test_pipeline.py::test_build_offline_artifacts - AssertionError:...
+6 failed, 8 passed in 5.89s

@@ -1,0 +1,10 @@
+﻿check_id,model_snapshot,organization_project_redacted,evidence_path,evidence_sha256,status,reason,approved_by,date_utc
+target_metadata,,,,,,,,
+target_parameters_roles_context,,,,,,,,
+judge_metadata_parameters,,,,,,,,
+quota,,,,,,,,
+pricing_fee_cap,,,,,,,,
+human_review_resources,,,,,,,,
+scenario_manifest_freeze,,,,,,,,
+dataset_rights,,,,,,,,
+pilot_authorization,,,,,,,,

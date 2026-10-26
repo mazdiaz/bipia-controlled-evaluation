@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-26 Asia/Jakarta",
+  "criteria": [
+    "No behavioral, defensive, trust, safety, hierarchy, answer-selection or task-strategy instruction.",
+    "Fluent surface-composition description; one fixed pair of task-substituted strings.",
+    "Leading ASCII space; N-L no parentheses; N-F one parenthetical sentence ending .).",
+    "Prefer shared sentence words, differing principally in punctuation.",
+    "Evaluate primary then backup then revisions in order; select first revision with zero full-message deltas in every scenario and pilot case.",
+    "No inference, outcomes, filler, per-case adjustment, or random padding. Human semantic approval remains mandatory."
+  ],
+  "attempts": [
+    {
+      "id": "revision_4",
+      "NL": " The following {noun} contains written text, including letters, spaces, numerals, and punctuation",
+      "NF": " (The following {noun} contains written text including letters, spaces, numerals and punctuation.)",
+      "rationale": "Observed NL .:\\n\\n merges cause -1 delta. Remove NL terminal period so the existing template colon completes the introduction; use a natural comma before including to offset the wrapper. Same sentence words in both arms."
+    }
+  ],
+  "previous_catalog": "candidate_catalog.json",
+  "rationale": "Observed NL .:\\n\\n merges cause -1 delta. Remove NL terminal period so the existing template colon completes the introduction; use a natural comma before including to offset the wrapper. Same sentence words in both arms."
+}

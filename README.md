@@ -1,9 +1,11 @@
 # BIPIA offline thesis preflight
 
-**NO-GO for a live pilot.** The unchanged draft neutral controls fail exact token
-matching. This package implements offline infrastructure; no target model or judge
-was called. See [05_preflight_report.md](05_preflight_report.md) for measured results
-and [HANDOFF_05B.md](HANDOFF_05B.md) for the remaining gates.
+**NO-GO for a live pilot.** Chat 5A.1 resolves offline exact token matching with
+revision 4 neutral controls, pending human approval. No target model or judge was
+called. Read [05A1_remediation_report.md](05A1_remediation_report.md) and
+[HANDOFF_05B_UPDATED.md](HANDOFF_05B_UPDATED.md). The original failed token evidence,
+[05_preflight_report.md](05_preflight_report.md), and [HANDOFF_05B.md](HANDOFF_05B.md)
+remain unchanged historical records.
 
 The user-linked [protocol](docs/04_experiment_design.md) is authoritative for study
 requirements. The assignment's offline-only authorization governs execution.
@@ -58,6 +60,28 @@ the supplied fetch script does. Do not rewrite a working repository with user ed
 
 ## Commands and layout
 
+### Reproduce Chat 5A.1 without overwriting historical evidence
+
+After the existing environment/tokenizer cache is prepared:
+
+```powershell
+.\.venv\Scripts\python.exe -m scripts.audit_05a1_candidates
+.\.venv\Scripts\python.exe -m scripts.audit_05a1_candidates evidence/05A1/candidate_catalog_round2.json
+.\.venv\Scripts\python.exe -m scripts.run_05a1_build
+.\.venv\Scripts\python.exe -m scripts.prepare_05a1_materials
+.\.venv\Scripts\python.exe -m pytest -v --junitxml=evidence/05A1/pytest.xml
+```
+
+Use a fresh versioned build folder for any later prompt revision. The 05A1 builder
+uses `artifacts-05A1/` and blocks outbound sockets (Windows asyncio loopback allowed).
+The materials command verifies original local `artifacts/` manifests and protected
+baseline evidence before writing blank forms. Do not rerun it over completed
+reviewer submissions: copy submissions to a separate immutable review directory.
+Do not use legacy `scripts/publish_evidence.py` or the original transcript command
+to publish 05A1: they write historical evidence/report paths. New evidence is in
+`evidence/05A1/`; review instructions/forms in `docs/review_05A1/`, restricted source
+booklets in `artifacts-05A1/review_packets/`.
+
 `python -m preflight --help` lists options. Default: both scenarios, 10,000 bootstrap
 draws, all case/arm mock invocations. `--bootstrap-repetitions 20 --no-mock --out
 artifacts-quick` is a faster partial build; it does not establish P0-F in that build.
@@ -107,8 +131,10 @@ certify any real gold answer. Hard-benign construction/approval and human audit 
 manual, documented stages. Source-only uncertainty is conditional on the 15 fixed
 attack families. Simulated effects are engineering checks, never thesis findings.
 
-Draft controls are unchanged, unreviewed and unmatched. There was no padding, wording
-search, attack-output optimization, replacement model, or boundary-marker arm.
+Revision 4 controls are offline matched and unreviewed. Six ordered candidate pairs
+(including historical primary and predeclared backup) were evaluated using only
+neutral-language criteria and offline counts; every attempt remains recorded.
+There was no padding, attack-output optimization, replacement target model, or boundary-marker arm.
 `gpt-5.4-mini-2026-03-17` remains a proposal, not proof of account access.
 Provider context capacity, request support, hidden wrappers and output adequacy remain
 unverified. There is no automatic truncation or message shortening.

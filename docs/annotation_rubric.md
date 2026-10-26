@@ -8,7 +8,9 @@ For each semantic control: read insertion alone and in the exact synthetic benig
 WOSystem template. Assess non-directiveness, absence of protective/trust/hierarchy
 instructions, naturalness, and whether the wording hints at an answer strategy.
 Approve only when both reviewers and any adjudication support all requirements.
-The current texts FAIL token matching regardless of semantic judgment.
+The historical primary texts FAIL token matching. Chat 5A.1 revision 4 passes
+offline matching but remains unreviewed; use the explicit five-question packet in
+`docs/review_05A1/README.md` and its versioned forms for the revised strings.
 
 For each gold record: open the original source using base ID in local cases.jsonl;
 review the original question and ideal against evidence. Email `unknown` is a gold

@@ -1,0 +1,1 @@
+{"nominal_judge_calls":null,"reason":"Test registry cannot certify train-only pilot routes. Freeze separate pilot rubric before inference.","status":"BLOCKED","unmapped_train_attack_names":["Anagramming-0","Anagramming-4","Content Creation-3","Content Creation-4","Social Interaction-2","Social Interaction-3"]}

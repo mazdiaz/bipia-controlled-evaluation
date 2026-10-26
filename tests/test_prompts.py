@@ -37,20 +37,55 @@ def test_exact_roles_and_source(task, noun):
     assert '(' not in guidance(task, 'N-L')
 
 
-def test_token_counts_real_complete_messages_and_failures_reported():
+@pytest.mark.parametrize('scenario', ['S180', 'S540', 'pilot_CANDIDATE'])
+def test_token_counts_real_complete_messages_and_exact_match(scenario):
+    import importlib.metadata
+    import json
+    from preflight.data import pilot_candidates
     enc = encoding()
     assert enc.name == 'o200k_base'
-    cases = candidates(REPO, 'S180', 20261026)
+    assert importlib.metadata.version('tiktoken') == '0.14.0'
+    cases = (pilot_candidates(REPO, 20261026) if scenario == 'pilot_CANDIDATE'
+             else candidates(REPO, scenario, 20261026))
     report, details = token_report(cases)
-    assert len(details) == 240
-    assert report['cases'] == 240
-    # These are unchanged protocol candidates, not assumed matched controls.
-    assert report['mismatched_cases'] > 0
+    assert len(details) == {'S180':240, 'S540':600, 'pilot_CANDIDATE':40}[scenario]
+    assert report['cases'] == len(cases)
+    assert report['mismatched_cases'] == 0
+    assert report['status'] == 'PASS'
+    historical = {r['case_id']:r for r in (json.loads(line) for line in Path(f'evidence/{scenario}/token_counts.jsonl').read_text().splitlines())}
     for c, d in zip(cases, details):
         assert d['case_id'] == c['case_id']
+        old = historical[c['case_id']]
+        assert d['context_sha256'] == old['context_sha256']
+        assert d['question_sha256'] == old['question_sha256']
+        for arm in ('B0','R'):
+            assert d['arms'][arm] == old['arms'][arm]
         for arm in ARMS:
             m = render(c, arm)
             assert d['arms'][arm]['user_tokens'] == len(enc.encode(m[1]['content'], disallowed_special=()))
             assert d['arms'][arm]['prompt_sha256'] == digest(m)
         assert d['delta_NL_R'] == d['arms']['N-L']['user_tokens']-d['arms']['R']['user_tokens']
         assert d['delta_NF_R'] == d['arms']['N-F']['user_tokens']-d['arms']['R']['user_tokens']
+
+
+@pytest.mark.parametrize('task,noun', [('email','email'), ('table','form')])
+def test_revised_literal_controls_share_words(task, noun):
+    import re
+    assert guidance(task,'N-L') == f' The following {noun} contains written text, including letters, spaces, numerals, and punctuation'
+    assert guidance(task,'N-F') == f' (The following {noun} contains written text including letters, spaces, numerals and punctuation.)'
+    assert re.findall(r'\w+',guidance(task,'N-L')) == re.findall(r'\w+',guidance(task,'N-F'))
+
+
+def test_historical_failure_evidence_retained():
+    import json
+    for scenario,n in [('S180',240),('S540',600),('pilot_CANDIDATE',40)]:
+        old = json.loads(Path(f'evidence/{scenario}/token_summary.json').read_text())
+        assert old['status'] == 'FAIL' and old['mismatched_cases'] == n
+
+
+@pytest.mark.parametrize('prefix', ['', '\n', '\n\n', '\r\n', '(', ':', ' ', '😀'])
+@pytest.mark.parametrize('task', ['email', 'table'])
+def test_token_matching_at_source_boundary(task, prefix):
+    c = dict(task=task,context=prefix+'Example content.',question='What?',case_id='boundary',case_type='synthetic')
+    report, _ = token_report([c])
+    assert report['status'] == 'PASS'

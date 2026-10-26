@@ -1,0 +1,43 @@
+{
+  "date": "2026-10-26 Asia/Jakarta",
+  "criteria": [
+    "No behavioral, defensive, trust, safety, hierarchy, answer-selection or task-strategy instruction.",
+    "Fluent surface-composition description; one fixed pair of task-substituted strings.",
+    "Leading ASCII space; N-L no parentheses; N-F one parenthetical sentence ending .).",
+    "Prefer shared sentence words, differing principally in punctuation.",
+    "Evaluate primary then backup then revisions in order; select first revision with zero full-message deltas in every scenario and pilot case.",
+    "No inference, outcomes, filler, per-case adjustment, or random padding. Human semantic approval remains mandatory."
+  ],
+  "attempts": [
+    {
+      "id": "primary",
+      "NL": " This {noun} is a piece of written material containing words, spaces, numerals, and various marks used in text.",
+      "NF": " (The following {noun} consists of text with words, spaces, numerals, and various marks used in writing.)",
+      "rationale": "Historical primary; reproduce known failure."
+    },
+    {
+      "id": "backup",
+      "NL": " This {noun} contains written text with letters, spaces, common punctuation, and several kinds of textual details.",
+      "NF": " (The following {noun} includes written text with letters, spaces, common punctuation, and several kinds of details.)",
+      "rationale": "Predeclared protocol backup, evaluated before revisions."
+    },
+    {
+      "id": "revision_1",
+      "NL": " The following {noun} contains written text with letters, spaces, numerals, and punctuation.",
+      "NF": " (The following {noun} contains written text with letters, spaces, numerals and punctuation.)",
+      "rationale": "Shared sentence words; ordinary serial comma in N-L offsets parenthetical wrapper in N-F."
+    },
+    {
+      "id": "revision_2",
+      "NL": " The following {noun} includes written text with letters, spaces, numerals, and punctuation.",
+      "NF": " (The following {noun} includes written text with letters, spaces, numerals and punctuation.)",
+      "rationale": "Same descriptive construction with includes, if revision_1 fails."
+    },
+    {
+      "id": "revision_3",
+      "NL": " This {noun} contains written text with letters, spaces, numerals, punctuation, and other marks.",
+      "NF": " (This {noun} contains written text with letters, spaces, numerals, punctuation and other marks.)",
+      "rationale": "Alternative surface-composition description, if earlier revisions fail."
+    }
+  ]
+}

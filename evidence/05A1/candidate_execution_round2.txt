@@ -1,0 +1,1 @@
+revision_4 0 [('S180', 'email', [0], [0]), ('S180', 'table', [0], [0]), ('S540', 'email', [0], [0]), ('S540', 'table', [0], [0]), ('pilot_CANDIDATE', 'email', [0], [0]), ('pilot_CANDIDATE', 'table', [0], [0])]

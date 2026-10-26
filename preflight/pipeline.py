@@ -167,7 +167,7 @@ def build(repo, out, *, scenarios=('S180','S540'), bootstrap_repetitions=10000, 
     summary['p0_gates'] = {
         'A':dict(status='PASS',evidence='input_hashes.json; data tests',remaining='near-duplicate identity remains unknown',prevents_pilot=False),
         'B':dict(status='PASS',evidence='source AST/golden prompt tests; token prompt hashes',remaining='provider role acceptance unverified under C',prevents_pilot=False),
-        'C':dict(status='FAIL',evidence='*/token_counts.jsonl; proposed model mapping verified',remaining='exact control match fails; model access/serialization/context limit unverified',prevents_pilot=True),
+        'C':dict(status='BLOCKED' if all(v['tokens']['status']=='PASS' for v in summary['scenarios'].values()) and pilot_tokens['status']=='PASS' else 'FAIL',evidence='*/token_counts.jsonl; proposed model mapping verified',remaining='offline matching measured separately; model access/serialization/context limit unverified',prevents_pilot=True),
         'D':dict(status='BLOCKED',evidence='arms.json; blank independent reviewer CSVs',remaining='two independent semantic approvals and adjudication; final strings not frozen',prevents_pilot=True),
         'E':dict(status='BLOCKED',evidence='blank gold/hard-benign review templates',remaining='original gold/answerability and normalization review; no qualified hard-benign set',prevents_pilot=True),
         'F':dict(status='PASS' if mock else 'BLOCKED',evidence='runner tests; */mock_summary.json; history and response ledgers' if mock else 'mock execution disabled in this build',remaining='future live adapter requires separate validation',prevents_pilot=not mock),

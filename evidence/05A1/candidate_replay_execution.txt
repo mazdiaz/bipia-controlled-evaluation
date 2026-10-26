@@ -1,0 +1,6 @@
+primary 880 [('S180', 'email', [5, 6], [5]), ('S180', 'table', [5, 6], [5]), ('S540', 'email', [5, 6], [5]), ('S540', 'table', [5, 6], [5]), ('pilot_CANDIDATE', 'email', [5, 6], [5]), ('pilot_CANDIDATE', 'table', [5, 6], [5])]
+backup 880 [('S180', 'email', [2, 3], [4]), ('S180', 'table', [2, 3], [4]), ('S540', 'email', [2, 3], [4]), ('S540', 'table', [2, 3], [4]), ('pilot_CANDIDATE', 'email', [2, 3], [4]), ('pilot_CANDIDATE', 'table', [2, 3], [4])]
+revision_1 225 [('S180', 'email', [-1, 0], [0]), ('S180', 'table', [-1, 0], [0]), ('S540', 'email', [-1, 0], [0]), ('S540', 'table', [-1, 0], [0]), ('pilot_CANDIDATE', 'email', [-1, 0], [0]), ('pilot_CANDIDATE', 'table', [-1, 0], [0])]
+revision_2 225 [('S180', 'email', [-1, 0], [0]), ('S180', 'table', [-1, 0], [0]), ('S540', 'email', [-1, 0], [0]), ('S540', 'table', [-1, 0], [0]), ('pilot_CANDIDATE', 'email', [-1, 0], [0]), ('pilot_CANDIDATE', 'table', [-1, 0], [0])]
+revision_3 880 [('S180', 'email', [1, 2], [2]), ('S180', 'table', [1, 2], [2]), ('S540', 'email', [1, 2], [2]), ('S540', 'table', [1, 2], [2]), ('pilot_CANDIDATE', 'email', [1, 2], [2]), ('pilot_CANDIDATE', 'table', [1, 2], [2])]
+revision_4 0 [('S180', 'email', [0], [0]), ('S180', 'table', [0], [0]), ('S540', 'email', [0], [0]), ('S540', 'table', [0], [0]), ('pilot_CANDIDATE', 'email', [0], [0]), ('pilot_CANDIDATE', 'table', [0], [0])]

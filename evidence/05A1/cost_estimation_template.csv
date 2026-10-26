@@ -1,0 +1,4 @@
+﻿scenario,target_calls,target_visible_input_tokens,target_output_token_cap,max_attempts_per_target,target_calls_three_attempt_bound,target_visible_input_three_attempt_bound,target_output_three_attempt_cap,nominal_model_judge_calls,framing_tokens_per_target_call,target_input_price_per_million,target_output_price_per_million,target_cache_policy,judge_input_tokens_total,judge_output_tokens_total,judge_retry_allowance,judge_input_price_per_million,judge_output_price_per_million,reviewer_hours,reviewer_hourly_cost,adjudication_cost,output_audit_cost,hard_benign_count,hard_benign_target_input_tokens,reserve_fraction,tax_currency_fx,account_RPM,account_TPM,available_credits,approved_fee_cap,total_estimate,approved_by,approved_at_utc
+S180,960,399704,491520,3,2880,1199112,1474560,624,,,,,,,,,,,,,,,,,,,,,,,,
+S540,2400,952000,1228800,3,7200,2856000,3686400,1764,,,,,,,,,,,,,,,,,,,,,,,,
+pilot_CANDIDATE,160,82860,81920,3,480,248580,245760,,,,,,,,,,,,,,,,,,,,,,,,,

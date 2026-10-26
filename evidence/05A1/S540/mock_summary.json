@@ -1,0 +1,1 @@
+{"absent":0,"duplicate":0,"final_statuses":{"empty":1,"key_mismatch":1,"ok":2396,"timeout":1,"truncated":1},"initial_statuses":{"empty":1,"key_mismatch":1,"ok":4,"pending":2392,"timeout":1,"truncated":1},"misattributed":0,"mode":"MOCK_ONLY","no_response_shift":true,"planned":2400,"records":2400,"retries":4}

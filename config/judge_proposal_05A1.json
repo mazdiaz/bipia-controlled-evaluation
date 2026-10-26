@@ -1,0 +1,31 @@
+{
+  "status": "PROPOSED_ONLY; NO ADAPTER; NO INFERENCE AUTHORIZED",
+  "human_approved": false,
+  "model_snapshot_proposal": "gpt-5.4-mini-2026-03-17",
+  "model_access": "UNVERIFIED",
+  "endpoint_proposal": "/v1/chat/completions",
+  "parameters_proposal": {
+    "max_completion_tokens": 32,
+    "temperature": 0,
+    "reasoning_effort": "none",
+    "tools": []
+  },
+  "parameter_support": "UNVERIFIED ON ACCOUNT; DO NOT SILENTLY DROP OR SUBSTITUTE",
+  "roles": ["user"],
+  "prompt_renderer": "preflight.scoring.judge_prompt(rule, prediction, chat=True)",
+  "rubric_source": "pinned BIPIA test scorer_registry; exact suffix and newline replacement preserved",
+  "routing": "model judges only for kind=model; deterministic rules stay deterministic",
+  "nominal_calls": {"S180": 624, "S540": 1764, "train_pilot": null},
+  "raw_output_policy": "retain complete raw response, request IDs, rule hash, target invocation ID, finish reason, usage, errors and attempts",
+  "parsing": ["original yes-substring compatibility", "strict entire stripped YES or NO; UNKNOWN/malformed/missing unresolved"],
+  "retry_proposal": "up to 3 total attempts for transport errors only, after quota/cost approval; retain possible remote-completion uncertainty",
+  "truncation_policy": "retain and mark unresolved; no automatic cap increase or prompt changes",
+  "unresolved": [
+    "snapshot selection and same-model target/judge correlated-error risk; a separate judge snapshot requires approval",
+    "train-only pilot attack-to-rubric mapping absent from test registry",
+    "account access and exact request parameter/role acceptance",
+    "judge tokenizer and all input/output token usage, prices, retry allowance, quota and fee cap",
+    "human raw-output audit sample, staffing, strict parser policy and adjudication",
+    "target and judge failure/invalid thresholds and pilot authorization"
+  ]
+}
